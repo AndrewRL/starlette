@@ -10,7 +10,7 @@ templates = Jinja2Templates(directory='static/html')
 
 
 async def homepage(request):
-    return templates.TemplateResponse('index.html', {'request': request})
+    return templates.TemplateResponse('home.html', {'request': request})
 
 
 async def posts(request):
