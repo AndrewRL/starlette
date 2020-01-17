@@ -1,0 +1,379 @@
+body {
+  background-size: 20px 20px;
+  background-image:
+    linear-gradient(to right, rgba(173, 216, 230, .35) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(173, 216, 230, .35) 1px, transparent 1px);
+}
+
+link {
+    display: inline;
+}
+
+#content-area {
+    display: grid;
+    grid-template-columns: 1fr 2fr 6fr 2fr 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+        "left-buffer left-margin nav right-margin right-buffer"
+        "left-buffer left-margin content right-margin right-buffer"
+        "left-buffer left-margin footer right-margin right-buffer";
+}
+
+#left-buffer {
+    grid-area: left-buffer;
+}
+
+#left-margin {
+    grid-area: left-margin;
+}
+
+#content {
+    grid-area: content;
+}
+
+#right-margin {
+    grid-area: right-margin;
+}
+
+#right-buffer {
+    grid-area: right-buffer;
+}
+
+.nav {
+    grid-area: nav;
+    justify-self: center;
+}
+
+.nav-link {
+    font-family: "Permanent Marker";
+    color: black;
+    font-size: 1.5em;
+    text-decoration: none;
+    margin: 10px;
+}
+
+.nav-link.home {
+    color: crimson;
+}
+
+/* Define the classes for different Permanent Marker styles */
+.marker-header {
+    text-decoration: none;
+    font-family: 'Permanent Marker';
+    font-size: 2em;
+    color: crimson;
+}
+
+.marker-link-header {
+    text-decoration: none;
+    font-family: 'Permanent Marker';
+    font-size: 2em;
+    color: crimson;
+}
+
+.marker-link-header:hover {
+    text-decoration: underline;
+    font-family: 'Permanent Marker';
+    font-size: 2em;
+    color: crimson;
+}
+
+.marker-alert {
+    text-decoration: none;
+    font-family: 'Permanent Marker';
+    font-size: 1em;
+    line-height: 125%;
+    padding: 25px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.marker-border {
+    border: solid crimson;
+    border-color: crimson;
+    border-width: 6px 4px 5px 6px;
+    border-radius: 50% 8% 10% 4%/15% 25% 55% 45%;
+}
+
+.marker-title {
+    font-family: 'Permanent Marker';
+    font-size: 1.35em;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.marker-link-title {
+    text-decoration: none;
+    font-family: 'Permanent Marker';
+    font-size: 1.2em;
+}
+
+.marker-link-title:hover {
+    text-decoration: underline;
+    color: crimson;
+}
+
+.marker-info {
+    font-family: 'Permanent Marker';
+    color: gray;
+    font-size: 1em;
+}
+
+.marker-link-info {
+    font-family: 'Permanent Marker';
+    color: gray;
+    font-size: 1em;
+}
+
+.marker-link-info:hover {
+    text-decoration: underline;
+    color: gray;
+}
+
+.marker-see-all {
+    font-family: 'Permanent Marker';
+    font-size: 1;
+    text-decoration: none;
+    color: black;
+    padding: 0px;
+    margin: 0px;
+}
+
+.marker-see-all:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 5px;
+    color: black;
+}
+
+.marker-body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.recent-items {
+    padding: 0;
+    list-style-type: none;
+    margin: 0px;
+}
+
+.recent-post-link {
+    color: black;
+    width: 75%;
+    float: left;
+}
+
+.placeholder {
+    font-family: 'Permanent Marker';
+}
+
+.material-icons.clock {
+    color: crimson;
+    font-size: 1em;
+}
+
+.post-listing {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: .9em;
+}
+
+.short-br {
+    line-height: 25%;
+}
+
+.post-listing-title {
+    float: left;
+    color: black;
+    width: 80%;
+    padding-bottom: 15px;
+    line-height: 100%;
+}
+
+.post-listing-timestamp {
+    float: right;
+    vertical-align: top;
+    margin: 0;
+}
+
+.post-listing-summary {
+    margin:0px;
+    margin-bottom: 10px;
+}
+
+.post-listing-tags {
+    margin: 0px;
+    margin-left: 20px;
+}
+
+/* Post Page */
+.post-lead-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 80%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0px 10px 15px LightGray;
+};
+
+.post-body{
+    line-height: 125%;
+}
+
+
+/* Search Pane */
+#search-pane {
+    width: 100%;
+    line-height: 100%;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#search-bar {
+    display: inline-block;
+    width: 85%;
+    margin-top: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-bottom: 5px solid black;
+}
+
+#search-input {
+    float: left;
+    width: 75%;
+    height: 1.5em;
+    font-size: 1.35em;
+    font-family: 'Permanent Marker';
+    border: 0;
+    background: none;
+    padding-left: 2px;
+    color: crimson;
+    caret-color: black;
+}
+
+#search-input:focus {
+    outline: none;
+}
+
+#search-input::placeholder {
+    padding-left: 5px;
+    font-family: 'Permanent Marker';
+    text-align: bottom;
+    color: LightGray;
+}
+
+#search-button {
+    float: right;
+    height: 1.5em;
+    font-size: 1.35em;
+    font-family: 'Permanent Marker';
+    border: 0;
+    background: none;
+    color: LightGray;
+}
+
+#search-button:hover {
+    color: crimson;
+}
+
+.clear {
+    clear: left;
+    display: block;
+}
+
+#search-tabs {
+    display: inline-block;
+    width: 85%;
+}
+
+#filters-tab {
+    float: left;
+    margin: 10px;
+}
+
+#filter-pane {
+    display: none;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.filter-flag {
+    float: left;
+}
+
+.filter-flag-label {
+    float: left;
+}
+
+#exclude-container {
+    width: 100%;
+}
+
+.exclude-tags-label {
+    float: left;
+    margin: 0px;
+}
+
+#exclude-tags-input {
+    float: left;
+    height: 1em;
+    width: 75%;
+    font-size: 1em;
+    font-family: 'Permanent Marker';
+    border: 0;
+    background: none;
+    padding-left: 2px;
+    color: crimson;
+    caret-color: black;
+    border-bottom: 2px solid black;
+}
+
+#exclude-tags-input:focus {
+    outline: none;
+}
+
+#exclude-tags-input::placeholder {
+    font-family: 'Permanent Marker';
+    text-align: bottom;
+    color: LightGray;
+}
+
+.sort-by-tab {
+    float: right;
+    margin: 10px;
+}
+
+.sort-by-select {
+
+}
+
+.clear-button {
+    border: 0px;
+    background: none;
+}
+
+.clear-button:focus {
+    outline: none;
+}
+
+/* Home Page */
+.nav {
+    margin-bottom: 20px;
+}
+
+
+.home-post-summary {
+    margin-top: .5em;
+    margin-bottom: .5em;
+}
+
+.home-post-listing {
+    margin-bottom: 1em;
+}
+
+.float-right {
+    float: right;
+}
+
+.float-left {
+    float: left;
+}

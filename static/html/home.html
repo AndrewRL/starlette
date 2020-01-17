@@ -1,7 +1,62 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Posts</h1>
-<h1>Projects</h1>
-<h1>About</h1>
-<p>Andrew is a software developer and data scientist from Vancouver, BC.</p>
+<h3 class="marker-alert marker-border">Hi there! This is the personal site of Andrew Laird. You can find links to my recent work below
+    and more information about me, as well as my resume and CV, on the about page. You can reach me via the social
+    links in the upper right, where you'll also find a link to my GitHub which contains the code for most of my blog
+    posts and projects.</h3>
+<!-- Projects --->
+<a class='marker-link-header' href="{{ url_for('projects') }}">Projects</a>
+<ul class="recent-items">
+{% for project in projects %}
+    <li>
+        <span class="marker-title">{{ project['name'] }}</span>
+        <span class="marker-info"><span class="marker-info timestamp">{{ project['created']}}</span> | Updated <span class="marker-info timestamp">{{ project['updated'] }}</span></span>
+        <br>
+        <span class="marker-body">{{ project['short_summary'] }}</span>
+    </li>
+    {% endfor %}
+    <li><a class='marker-see-all' href="{{ url_for('projects') }}">+ See All</a></li>
+</ul>
+<!-- Posts --->
+<a class="marker-link-header" href="{{ url_for('posts') }}">Posts</a>
+<ul class="recent-items">
+    {% for post in posts %}
+        <li>
+            <div class="home-post-listing">
+                <a class="marker-link-title recent-post-link" href="{{ url_for('post', post_id=post['id']|string) }}">{{ post['title'] }}</a>
+                <span class="marker-info timestamp float-right">{{ post['timestamp']}}</span>
+                <span class="clear"></span>
+                <p class="marker-body home-post-summary">{{ post['short_summary'] }}</p>
+                <span class="marker-info"><i class="material-icons clock">schedule</i> {{ post['length_in_min'] }} minute read</span>
+                <span class="marker-info post-listing-tags">
+                    Tags: {% for tag in post['tags'] %}
+                            {{ tag }}{% if not loop.last %}, {% endif %}
+                          {% endfor %}
+                </span>
+            </div>
+        </li>
+    {% endfor %}
+    <li><a class='marker-see-all' href="{{ url_for('posts') }}">+ See All</a></li>
+</ul>
+<!-- Reviews --->
+<a class="marker-link-header" href="{{ url_for('reviews') }}">Books and Articles</a>
+{% if reviews %}
+<ul class="recent-items">
+{% for review in reviews %}
+    <li>
+        <span class="marker-title">{{ review['name'] }}</span>
+        <span class="marker-info"> <span class="marker-info timestamp">{{ review['timestamp']}}</span></span>
+        <br>
+        <span class="marker-body">{{ review['summary'] }}</span>
+    </li>
+{% endfor %}
+<li><a class='marker-see-all' href="{{ url_for('reviews') }}">+ See All</a></li>
+</ul>
+{% else %}
+<p class="marker-body">There aren't any reviews yet. Check back soon!</p>
+{% endif %}
+
+<!-- About --->
+<a class="marker-link-header" href="{{ url_for('about') }}">About</a>
+<p class="marker-body">Andrew is a software developer and data scientist from Vancouver, BC.</p>
 {% endblock %}

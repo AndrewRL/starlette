@@ -1,0 +1,49 @@
+TODO:
+- Find a better clock icon
+- Think about date formatting for post listings
+- Add an algorithm to calculate short summary length
+- Find a good secondary font
+- rename home-class-info class, it is just right float for timestamp
+- change marker-see-all / see-all classes to marker-link-title
+- come up with a solution to having more tags than fit in the space
+    - Use an 'and {X} more...' clickable icon to expand the full list in place after top or 5 tags
+- make lead image pop out when clicked
+
+TODO: BASE.HTML
+- Restructure base.html to allow easy manipulation of the nav bar on other pages
+- Break out the nav bar from the content area
+
+TODO: HOME PAGE
+- Change format of date and read time
+- Add time to follow along to home page post listing
+
+TODO: POST PAGE
+- Highlight "Posts" nav link when on a specific post
+- Add a "Back to Search" link when coming from a search page
+- Add article information pane below title
+- Add margin notes section at bottom with links
+- Create margin note and arrow generation in css / js
+- Add options
+    - White background
+    - Font size
+    - Margin notes margin / inline / off
+
+TODO: Database
+
+
+TODO: POSTS LISTING
+- Fix options button css
+- Format options
+- Make sure search button is properly disabled when no text in box
+- Style the filter flag checkboxes
+- Add filter by date
+- Style the pop-down filter pane
+- Style the sort-by select
+- Make "Enter" search when highlighting input field
+- Add back end function to search by exact tag
+- Add backend function to exclude tags
+- Highlight filter tab in crimson and add a warning icon if filters are selected and tab is closed
+- Add search functionality
+- Make tags link to a search for the selected tag
+- Create a transition when filtering / searching posts
+

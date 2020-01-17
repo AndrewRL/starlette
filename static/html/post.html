@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="post-container">
+    <img class='post-lead-image' src="/static/images/{{ post['lead_image'] }}" alt="New Zealand Scenery">
+    <h1 class="marker-title">{{ post['title'] }}</h1>
+    <span class="marker-info float-left"><i class="material-icons clock">schedule</i> {{ post['length_in_min'] }} minute read</span>
+    <span class="marker-info timestamp float-right">{{ post['timestamp']}}</span>
+    <span class="clear"></span>
+    <span class="marker-info">
+                    Tags: {% for tag in post['tags'] %}
+                            {{ tag }}
+                            {% if not loop.last %}, {% endif %}
+                          {% endfor %}
+                </span>
+    <span class="clear"></span>
+    <button type="button" id='options-tab' class="marker-link-info clear-button">+ Options</button>
+    <div class="marker-body post-body">{{ post['body']|safe }}</div>
+</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+To run:
+
+With starlette and uvicorn installed:
+
+uvicorn server:app
+
+to run the page server.
+
+Access via 127.0.0.1:8000
+
+Font is "Permanent Marker" from Google Fonts. Most text is styled with the "marker-*" classes.
