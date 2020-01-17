@@ -48,6 +48,8 @@ class Review:
         self.id = review['id']
         self.timestamp = datetime.strptime(review['timestamp'], '%Y-%m-%d %H:%M:%S')
         self.name = review['name']
+        self.creator = review['creator']
+        self.publication_year = review['publication_year']
         self.summary = review['summary']
         self.body = review['body']
         self.rating = review['rating']

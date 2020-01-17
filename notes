@@ -11,9 +11,9 @@ TODO:
 
 TODO: BASE.HTML
 - Restructure base.html to allow easy manipulation of the nav bar on other pages
-- Break out the nav bar from the content area
 
 TODO: HOME PAGE
+- Add links for social sites to projects, make icons optional based on link presence
 - Change format of date and read time
 - Add time to follow along to home page post listing
 
@@ -27,6 +27,10 @@ TODO: POST PAGE
     - White background
     - Font size
     - Margin notes margin / inline / off
+
+TODO: PROJECTS
+- Fix tags
+
 
 TODO: Database
 

@@ -1,10 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+<div class="post-container">
+    <img class='post-lead-image' src="/static/images/{{ project['lead_image'] }}" alt="New Zealand Scenery">
+    <h1 class="marker-title">{{ project['name'] }}</h1>
+    <span class="marker-info timestamp">{{ project['updated']}}</span>
+    <span class="clear"></span>
+    <span class="marker-info">
+                    Tags: {% for tag in project['tags'] %}
+                            {{ tag }}
+                            {% if not loop.last %}, {% endif %}
+                          {% endfor %}
+                </span>
+    <span class="clear"></span>
+    <button type="button" id='options-tab' class="marker-link-info clear-button">+ Options</button>
+    <div class="marker-body post-body">{{ project['body']|safe }}</div>
+</div>
+{% endblock %}

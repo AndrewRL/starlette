@@ -60,6 +60,8 @@ def create_reviews_table():
         Column('id', Integer, primary_key=True),
         Column('timestamp', Text),
         Column('name', Text),
+        Column('creator', Text),
+        Column('publication_year', Integer),
         Column('summary', Text),
         Column('body', Text),
         Column('rating', Integer),

@@ -1,37 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
-<div id="search-pane">
-    <div id="search-bar">
-        <input id="search-input" placeholder="Search by keyword or tag...">
-        <button type="button" id="search-button">Search</button>
-        <span class="clear"></span>
-    </div>
-    <span class="clear"></span>
-    <div id="search-tabs">
-        <button type="button" id='filters-tab' class="marker-see-all clear-button">+ Options</button>
-        <p class="marker-title sort-by-tab">Sorted by:
-            <select class="sort-by-select">
-                <option value="newest">Newest</option>
-                <option value="oldest">Oldest</option>
-            </select>
-        </p>
-        <span class="clear"></span>
-    <div id="filter-pane">
-        <input id='exact-tag-flag' class="filter-flag" type="checkbox" value="exact-tag">
-        <label for="exact-tag-flag" class="marker-body filter-flag-label">Match Exact Tag(s) (Separate with ';'. Whitespace is ignored.)</label>
-        <span class="clear"></span>
-        <div id="exclude-container">
-            <p class="marker-body exclude-tags-label">Exclude Tags: </p>
-            <input id="exclude-tags-input" placeholder="Enter tags separated by semicolons (;)...">
-            <span class="clear"></span>
-        </div>
-    </div>
-    </div>
-</div>
+
+{{ search() }}
 
 {% for post in posts %}
 <div class="post-listing">
-    <a class="marker-link-title post-listing-title" href="{{ url_for('post', post_id=post['id']|string) }}">{{ post['title'] }}</a></h1>
+    <a class="marker-link-title post-listing-title" href="{{ url_for('post', post_id=post['id']|string) }}">{{ post['title'] }}</a>
     <p class="marker-info timestamp post-listing-timestamp">{{ post['timestamp'] }}</p>
     <span class="clear"></span>
     <p class="marker-body post-listing-summary">{{ post['long_summary'] }}</p>

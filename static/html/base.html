@@ -1,26 +1,92 @@
 <!DOCTYPE html>
+
+{% macro show_post(post) %}
+    <h3>{{ post.title }}</h3>
+    <span class="date">{{ post.date }}</span>
+    {{ post.body }}
+{% endmacro %}
+
+{% macro star_rating(rating) %}
+    <span class="star-rating">
+    {% for n in range((rating/2)|int) %}
+    <i class="material-icons rating-star">star</i>
+    {% endfor %}
+    {% if rating % 2 == 1 %}
+    <i class="material-icons rating-star">star_half</i>
+    {% endif %}
+    {% for n in range(((10-rating)/2)|int) %}
+    <i class="material-icons rating-star">star_border</i>
+    {% endfor %}
+    </span>
+{% endmacro %}
+
+{% macro tag_list(tags) %}
+    Tags: {% for tag in tags %}
+            {{ tag }}{% if not loop.last %}, {% endif %}
+          {% endfor %}
+{% endmacro %}
+
+{% macro search() %}
+    <div id="search-pane">
+        <div id="search-bar">
+            <input id="search-input" placeholder="Search by keyword or tag...">
+            <button type="button" id="search-button">Search</button>
+            <span class="clear"></span>
+        </div>
+        <span class="clear"></span>
+        <div id="search-tabs">
+            <button type="button" id='filters-tab' class="marker-see-all clear-button">+ Options</button>
+            <p class="marker-title sort-by-tab">Sorted by:
+                <select class="sort-by-select">
+                    <option value="newest">Newest</option>
+                    <option value="oldest">Oldest</option>
+                </select>
+            </p>
+            <span class="clear"></span>
+        <div id="filter-pane">
+            <input id='exact-tag-flag' class="filter-flag" type="checkbox" value="exact-tag">
+            <label for="exact-tag-flag" class="marker-body filter-flag-label">Match Exact Tag(s) (Separate with ';'. Whitespace is ignored.)</label>
+            <span class="clear"></span>
+            <div id="exclude-container">
+                <p class="marker-body exclude-tags-label">Exclude Tags: </p>
+                <input id="exclude-tags-input" placeholder="Enter tags separated by semicolons (;)...">
+                <span class="clear"></span>
+            </div>
+        </div>
+        </div>
+    </div>
+{% endmacro %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Andrew's Homepage</title>
     <link rel="stylesheet" type="text/css" href="/static/css/base.css">
     <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js" type="text/javascript"></script>
     <script src="/static/js/base.js" type="text/javascript"></script>
 </head>
 <body>
     <div id="content-area">
+        {% block nav %}
         <div class="nav">
-            <a class="nav-link" href="/">Home</a>
-            <a class="nav-link" href="/posts">Posts</a>
-            <a class="nav-link" href="/projects">Projects</a>
-            <a class="nav-link" href="/books">Books</a>
-            <a class="nav-link" href="/courses">Courses</a>
-            <a class="nav-link" href="/about">About</a>
+            <span class="nav-links">
+                <a id="home-nav-link" class="nav-link" href="/">Home</a>
+                <a id="posts-nav-link" class="nav-link" href="/posts">Posts</a>
+                <a id="projects-nav-link" class="nav-link" href="/projects">Projects</a>
+                <a id="reviews-nav-link" class="nav-link" href="/reviews">Reviews</a>
+                <a id="about-nav-link" class="nav-link" href="/about">About</a>
+            </span>
+            <span class="nav-social-icons">
+                <a id="home-github-icon" href="https://github.com/andrewrl"><img class="nav-social-icon" src="/static/icons/github.svg"></a>
+                <a id="home-twitter-icon" href="https://twitter.com"><img class="nav-social-icon" src="/static/icons/twitter.svg"></a>
+                <a id="home-linkedin-icon" href="https://linkedin.com"><img class="nav-social-icon" src="/static/icons/linkedin.svg"></a>
+            </span>
+            <span class="clear"></span>
         </div>
+        {% endblock %}
         <div id="left-buffer"></div>
         <div id="left-margin"></div>
         <div id="content">

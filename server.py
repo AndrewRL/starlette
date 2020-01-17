@@ -163,6 +163,7 @@ async def project(request):
 async def reviews(request):
     all_reviews = get_items('reviews', Review)
     all_reviews = [review.to_dict() for review in all_reviews]
+    print(all_reviews)
     return templates.TemplateResponse('reviews.html', {'request': request, 'reviews': all_reviews})
 
 
@@ -170,10 +171,6 @@ async def review(request):
     review_id = int(request.path_params['review_id'])
     review = get_item('reviews', Review, review_id).to_dict()
     return templates.TemplateResponse('review.html', {'request': request, 'review': review})
-
-
-async def courses(request):
-    return templates.TemplateResponse('base.html', {'request': request})
 
 
 async def about(request):
@@ -185,8 +182,9 @@ app = Starlette(debug=True, routes=[
     Route('/posts', posts),
     Route('/post/{post_id}', post),
     Route('/projects', projects),
+    Route('/project/{project_id}', project),
     Route('/reviews', reviews),
-    Route('/courses', courses),
+    Route('/review/{review_id}', review),
     Route('/about', about),
     Mount('/static', app=StaticFiles(directory='static'), name="static")
 ])

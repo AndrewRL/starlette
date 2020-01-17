@@ -41,7 +41,10 @@ link {
 
 .nav {
     grid-area: nav;
-    justify-self: center;
+}
+
+.nav-links {
+    float: left;
 }
 
 .nav-link {
@@ -54,6 +57,17 @@ link {
 
 .nav-link.home {
     color: crimson;
+}
+
+.nav-social-icons {
+    float: right;
+    padding-top: 10px;
+    letter-spacing: 10px;
+}
+
+.nav-social-icon {
+    height: 20px;
+    width: 20px;
 }
 
 /* Define the classes for different Permanent Marker styles */
@@ -69,6 +83,8 @@ link {
     font-family: 'Permanent Marker';
     font-size: 2em;
     color: crimson;
+    margin-bottom: 10px;
+    display: block;
 }
 
 .marker-link-header:hover {
@@ -155,10 +171,15 @@ link {
     margin: 0px;
 }
 
+.recent-items li {
+    padding-bottom: 20px;
+}
+
 .recent-post-link {
     color: black;
-    width: 75%;
-    float: left;
+    display: block;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
 }
 
 .placeholder {
@@ -168,6 +189,7 @@ link {
 .material-icons.clock {
     color: crimson;
     font-size: 1em;
+    margin-left: 20px;
 }
 
 .post-listing {
@@ -201,7 +223,6 @@ link {
 
 .post-listing-tags {
     margin: 0px;
-    margin-left: 20px;
 }
 
 /* Post Page */
@@ -366,14 +387,114 @@ link {
     margin-bottom: .5em;
 }
 
-.home-post-listing {
-    margin-bottom: 1em;
-}
-
 .float-right {
     float: right;
 }
 
 .float-left {
     float: left;
+}
+
+.recent-post-tags {
+    margin: 0px;
+    margin-left:20px;
+}
+
+.recent-project {
+    position: relative;
+}
+
+.recent-project-text {
+    float: left;
+    width: 70%;
+}
+
+.recent-project-link {
+    color: black;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    font-size: 1.2em;
+    text-decoration: none;
+}
+
+.recent-project-link:hover {
+    color: crimson;
+    text-decoration: underline;
+}
+
+.recent-project-body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.recent-project-tags {
+    margin: 0px;
+}
+
+.recent-project-info {
+    float: right;
+}
+
+.recent-project-links {
+    padding-top: 10px;
+}
+
+.recent-project-icon {
+    height: 24px;
+    width: 24px;
+}
+
+.material-icons.recent-project-icon {
+    font-size: 24px;
+    color: black;
+}
+
+.recent-review-link {
+    width: 75%;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    color: black;
+    font-size: 1.2em;
+    text-decoration: none;
+    display: block;
+}
+
+.recent-review-info {
+    margin: 0px;
+    position: relative;
+}
+
+.review-byline {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    margin: 0px;
+}
+
+.review-text-rating {
+    padding-left: 20px;
+}
+
+.review-star-rating {
+    padding-left: 20px;
+}
+
+.review-timestamp {
+}
+
+.recent-review-tags {
+    margin: 0px;
+    padding-left: 20px;
+}
+
+/* Star Ratings */
+.star-rating {
+    letter-spacing: -8px;
+    vertical-align: middle;
+}
+
+.material-icons.rating-star {
+    font-size: 1.1em;
+    color: gold;
 }

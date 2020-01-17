@@ -43,8 +43,8 @@ def fake_project():
         'long_summary': faker.text(250),
         'body': generate_fake_paragraphs(7),
         'margin_notes': [],
-        'refs': [],
-        'tags': faker.words(faker.random_int(2,5))
+        'tags': faker.words(faker.random_int(2, 5)),
+        'refs': []
     }
 
     return project
@@ -55,9 +55,11 @@ def fake_review():
         'id': faker.random_int(0, 10000),
         'timestamp': faker.date_time_between(start_date="-3y"),
         'name': faker.sentence(5),
+        'creator': faker.name(),
+        'publication_year': faker.random_int(1900, 2020),
         'summary': faker.sentence(20),
         'body': generate_fake_paragraphs(4),
-        'rating': faker.random_int(0, 11),
+        'rating': faker.random_int(0, 10),
         'notes': faker.url(),
         'margin_notes': [],
         'tags': faker.words(3),
@@ -167,6 +169,8 @@ def populate_reviews(reviews):
         conn.execute('INSERT INTO "reviews" (id, '
                      'timestamp, '
                      'name, '
+                     'creator, '
+                     'publication_year, '
                      'summary, '
                      'body, '
                      'rating, '
@@ -175,7 +179,7 @@ def populate_reviews(reviews):
                      'tags, '
                      'refs, '
                      'link)'
-                     f'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [review[key] for key in review.keys()])
+                     f'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [review[key] for key in review.keys()])
     trans.commit()
     # Close connection
     conn.close()

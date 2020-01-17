@@ -1,10 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
 
-</body>
-</html>
+{{ search() }}
+
+{% for project in projects %}
+<div class="post-listing">
+    <a class="marker-link-title post-listing-title" href="{{ url_for('project', project_id=project['id']|string) }}">{{ project['name'] }}</a>
+    <p class="marker-info timestamp post-listing-timestamp">{{ project['created'] }}</p>
+    <span class="clear"></span>
+    <p class="marker-body post-listing-summary">{{ project['long_summary'] }}</p>
+    <p class="marker-info post-listing-tags">
+        Tags: {% for tag in project['tags'] %}
+                {{ tag }}
+                {% if not loop.last %}, {% endif %}
+              {% endfor %}
+    </p>
+</div>
+{% endfor %}
+{% endblock %}
