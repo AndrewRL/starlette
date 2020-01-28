@@ -8,6 +8,7 @@ TODO:
 - come up with a solution to having more tags than fit in the space
     - Use an 'and {X} more...' clickable icon to expand the full list in place after top or 5 tags
 - make lead image pop out when clicked
+- see if it is possible to quickly unpack dict values into models
 
 TODO: BASE.HTML
 - Restructure base.html to allow easy manipulation of the nav bar on other pages
@@ -30,6 +31,9 @@ TODO: POST PAGE
 
 TODO: PROJECTS
 - Fix tags
+
+TODO: Review Listing
+- Fix review listing star rating weird space between link and stars
 
 
 TODO: Database

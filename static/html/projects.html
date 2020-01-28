@@ -4,16 +4,26 @@
 {{ search() }}
 
 {% for project in projects %}
-<div class="post-listing">
-    <a class="marker-link-title post-listing-title" href="{{ url_for('project', project_id=project['id']|string) }}">{{ project['name'] }}</a>
-    <p class="marker-info timestamp post-listing-timestamp">{{ project['created'] }}</p>
-    <span class="clear"></span>
+<div class="project-listing">
+    <div class="project-header">
+        <div class="project-header-left">
+            <a class="primary-title-link post-listing-title" href="{{ url_for('project', project_id=project['id']|string) }}">{{ project['name'] }}</a>
+            <p class="no-margin">
+                <a class="marker-link-info" href="{{ project['github'] }}">Github</a>
+                <a class="marker-link-info" href="{{ project['docs'] }}">Docs</a>
+            </p>
+        </div>
+        <div class="project-timestamps">
+            <span class="marker-info post-listing-timestamp">Updated <span class="timestamp">{{ project['updated'] }}</span></span>
+            <br>
+            <span class="marker-info post-listing-timestamp">Created <span class="timestamp">{{ project['created'] }}</span></span>
+        </div>
+    </div>
     <p class="marker-body post-listing-summary">{{ project['long_summary'] }}</p>
-    <p class="marker-info post-listing-tags">
-        Tags: {% for tag in project['tags'] %}
-                {{ tag }}
-                {% if not loop.last %}, {% endif %}
-              {% endfor %}
+    <p class="project-listing-footer">
+        <span class="marker-info post-listing-tags">
+            {{ tag_list('projects', project['tags']) }}
+        </span>
     </p>
 </div>
 {% endfor %}

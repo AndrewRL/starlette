@@ -114,8 +114,6 @@ link {
 .marker-title {
     font-family: 'Permanent Marker';
     font-size: 1.35em;
-    margin-top: 20px;
-    margin-bottom: 20px;
 }
 
 .marker-link-title {
@@ -148,7 +146,7 @@ link {
 
 .marker-see-all {
     font-family: 'Permanent Marker';
-    font-size: 1;
+    font-size: 1em;
     text-decoration: none;
     color: black;
     padding: 0px;
@@ -159,6 +157,11 @@ link {
     text-decoration: underline;
     text-decoration-thickness: 5px;
     color: black;
+}
+
+.primary-body {
+    font-family: 'Permanent Marker', 'Roboto', sans-serif;
+    font-size: 1em;
 }
 
 .marker-body {
@@ -189,13 +192,13 @@ link {
 .material-icons.clock {
     color: crimson;
     font-size: 1em;
-    margin-left: 20px;
 }
+
+
 
 .post-listing {
     padding-top: 15px;
     padding-bottom: 15px;
-    font-size: .9em;
 }
 
 .short-br {
@@ -206,7 +209,6 @@ link {
     float: left;
     color: black;
     width: 80%;
-    padding-bottom: 15px;
     line-height: 100%;
 }
 
@@ -217,8 +219,6 @@ link {
 }
 
 .post-listing-summary {
-    margin:0px;
-    margin-bottom: 10px;
 }
 
 .post-listing-tags {
@@ -226,7 +226,7 @@ link {
 }
 
 /* Post Page */
-.post-lead-image {
+.lead-image {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -312,7 +312,6 @@ link {
 }
 
 #filter-pane {
-    display: none;
     margin-left: 10px;
     margin-right: 10px;
 }
@@ -370,6 +369,7 @@ link {
 .clear-button {
     border: 0px;
     background: none;
+    padding: 0px;
 }
 
 .clear-button:focus {
@@ -438,7 +438,7 @@ link {
 }
 
 .recent-project-links {
-    padding-top: 10px;
+
 }
 
 .recent-project-icon {
@@ -483,10 +483,75 @@ link {
 .review-timestamp {
 }
 
-.recent-review-tags {
-    margin: 0px;
-    padding-left: 20px;
+/* Projects Page */
+.project-info-container {
+    display: flex;
+    flex-driection: row;
+    justify-content: space-betwee;
 }
+
+.project-links {
+    flex-direction: column;
+    flex: 1;
+}
+
+.project-dates {
+    flex-direction: column;
+}
+.project-listing {
+    padding-bottom: 20px;
+}
+
+.project-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.project-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.project-header-left {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.project-listing-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content:
+}
+
+.project-timestamps {
+    flex-direction: column;
+}
+
+.project-thumbnail {
+    height: 100px;
+    width: 100px;
+}
+
+.link-icons {
+    width: 100px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.project-icon {
+    height: 32px;
+    width: 32px;
+}
+
+.material-icons.project-icon {
+    font-size: 32px;
+    color: black;
+}
+
+/* Reviews Page */
 
 /* Star Ratings */
 .star-rating {
@@ -497,4 +562,67 @@ link {
 .material-icons.rating-star {
     font-size: 1.1em;
     color: gold;
+}
+
+/* Utilities */
+.hflex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.no-margin {
+    margin: 0px;
+}
+
+.small-margin {
+    margin-top: .5em;
+    margin-bottom: .5em;
+}
+
+.pad-left-10 {
+    padding-left: 10px;
+}
+
+.pad-left-20 {
+    padding-left: 20px;
+}
+
+.primary-big-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5em;
+    font-weight: 900;
+}
+
+.primary-title-link {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2em;
+    font-weight: 900;
+    color: black;
+    text-decoration: none;
+}
+
+.primary-title-link:hover {
+    text-decoration: underline;
+    color: crimson;
+}
+
+.primary-info-link {
+    font-family: 'Permanent Marker', 'Roboto', sans-serif;
+    font-size: 1em;
+    color: grey;
+    text-decoration: underline;
+}
+
+.primary-info-link:hover {
+    color: crimson;
+    text-decoration: underline;
+}
+
+.tag-link {
+    padding-right: 3px;
+}
+
+#match-all-flag {
+    margin-left: 30px;
 }

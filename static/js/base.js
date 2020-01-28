@@ -13,19 +13,11 @@ window.onload = function() {
         }
   }
 
-  let filterTab = document.getElementById('filters-tab');
-  let filterPane = document.getElementById('filter-pane');
-  filterTab.onclick = function(e) {
-    console.log('Filter tab clicked.');
-    console.log(filterTab.innerText);
-    if (filterTab.innerText == '+ Options') {
-        console.log('In the true case!')
-        filterTab.innerText = '- Options';
-        filterPane.style.display = 'block';
-    } else {
-        filterTab.innerText = '+ Options';
-        filterPane.style.display = 'none';
-    }
+  document.getElementById('search-button').onclick = function(e) {
+    console.log('Search button clicked!');
+    query = generate_query();
+    console.log(query);
+    window.location.href = window.location.pathname + query;
   }
 
   // Color "Posts" nav link when looking at an individual post
@@ -50,8 +42,6 @@ formatTimestamps = function() {
 
 updateActiveNavLink = function() {
     [...document.querySelectorAll(".nav-link")].map(function(el) {
-        console.log(el.href)
-        console.log(window.location.href)
         if (el.href == window.location.href) {
             el.style.color = 'crimson';
         } else {
@@ -59,3 +49,33 @@ updateActiveNavLink = function() {
         };
     });
 };
+
+generate_query = function() {
+    // Get search terms
+    let search_terms = document.getElementById('search-input').value
+    // Get match-tags button
+    let match_tags = document.getElementById('exact-tag-flag').checked
+    // Get match all button
+    let match_all = document.getElementById('match-all-flag').checked
+    // Get exclude tags
+    let exclude_tags = document.getElementById('exclude-tags-input').value.replace(/\s/g, "")
+
+    // Build query string
+    let query_string = '?search=True&query=' + search_terms
+
+    if (match_tags){
+        query_string = query_string + '&match_tags=True';
+        search_terms = search_terms.replace(/\s/g, "");
+        query_string = query_string + '&tags=' + search_terms
+    }
+
+    if (match_all) {
+        query_string = query_string + '&match_all=True';
+    }
+
+    if (exclude_tags) {
+        query_string = query_string + '&exclude=' + exclude_tags
+    }
+
+    return query_string
+}

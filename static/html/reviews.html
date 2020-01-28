@@ -4,16 +4,16 @@
 {{ search() }}
 
 {% for review in reviews %}
-<div class="post-listing">
-    <a class="marker-link-title post-listing-title" href="{{ url_for('review', review_id=review['id']|string) }}">{{ review['name'] }}</a>
+<div class="review-listing">
+    <a class="primary-title-link post-listing-title" href="{{ url_for('review', review_id=review['id']|string) }}">{{ review['name'] }}</a>
     <p class="marker-info timestamp post-listing-timestamp">{{ review['timestamp'] }}</p>
     <span class="clear"></span>
-    <p class="marker-body post-listing-summary">{{ review['long_summary'] }}</p>
-    <p class="marker-info post-listing-tags">
-        Tags: {% for tag in review['tags'] %}
-                {{ tag }}
-                {% if not loop.last %}, {% endif %}
-              {% endfor %}
+    <p class="marker-info no-margin">By {{ review['creator'] }} ({{ review['publication_year'] }})</p>
+    <p class="marker-body post-listing-summary small-margin">{{ review['summary'] }}</p>
+    <p class="marker-info">
+        <a class="review-product-link primary-info-link" href="{{ review['link'] }}">Link</a>
+        <span class="review-star-rating pad-left-10">{{ star_rating(review['rating']) }}</span>
+        <span class="post-listing-tags pad-left-10">{{ tag_list('reviews', review['tags']) }}</span>
     </p>
 </div>
 {% endfor %}

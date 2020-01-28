@@ -22,7 +22,7 @@ def fake_post():
         'body': generate_fake_paragraphs(10),
         'margin_notes': [],
         'refs': [],
-        'tags': faker.words(3)
+        'tags': faker.words(3, ['wolf', 'mouse', 'bat', 'sheep', 'cow', 'swine'], unique=True)
     }
 
     return post

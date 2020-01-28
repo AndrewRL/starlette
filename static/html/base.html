@@ -20,41 +20,55 @@
     </span>
 {% endmacro %}
 
-{% macro tag_list(tags) %}
-    Tags: {% for tag in tags %}
-            {{ tag }}{% if not loop.last %}, {% endif %}
-          {% endfor %}
+{% macro tag_list(endpoint, tags) %}
+    Tags: {% if tags|length <= 3 %}
+            {% for tag in tags %}
+                <a class="primary-info-link tag-link" href="{{ search_url(endpoint, True, tags=tag) }}">{{ tag }}</a>{% if not loop.last %}, {% endif %}
+            {% endfor %}
+          {% else %}
+            {% for n in range(3) %}
+                <a class="primary-info-link tag-link" href="{{ search_url(endpoint, True, tags=tag) }}">{{ tags[n] }}</a>,
+            {% endfor %}
+            <button type="button" class="primary-info-link tag-link clear-button">and {{ tags|length - 3 }} more...</button>
+          {% endif %}
 {% endmacro %}
 
 {% macro search() %}
     <div id="search-pane">
         <div id="search-bar">
-            <input id="search-input" placeholder="Search by keyword or tag...">
+            <input id="search-input" placeholder="Search by keyword...">
             <button type="button" id="search-button">Search</button>
             <span class="clear"></span>
         </div>
         <span class="clear"></span>
         <div id="search-tabs">
             <button type="button" id='filters-tab' class="marker-see-all clear-button">+ Options</button>
-            <p class="marker-title sort-by-tab">Sorted by:
+            <p class="primary-body sort-by-tab">Sorted by:
                 <select class="sort-by-select">
                     <option value="newest">Newest</option>
                     <option value="oldest">Oldest</option>
                 </select>
             </p>
             <span class="clear"></span>
+        </div>
         <div id="filter-pane">
             <input id='exact-tag-flag' class="filter-flag" type="checkbox" value="exact-tag">
-            <label for="exact-tag-flag" class="marker-body filter-flag-label">Match Exact Tag(s) (Separate with ';'. Whitespace is ignored.)</label>
+            <label for="exact-tag-flag" class="marker-body filter-flag-label">Match Exact Tag(s) (Separate with ','. Whitespace is ignored.)</label>
+            <input id='match-all-flag' class="filter-flag" type="checkbox" value="match-tag">
+            <label for="match-all-flag" class="marker-body filter-flag-label">Must match all tags</label>
             <span class="clear"></span>
             <div id="exclude-container">
                 <p class="marker-body exclude-tags-label">Exclude Tags: </p>
-                <input id="exclude-tags-input" placeholder="Enter tags separated by semicolons (;)...">
+                <input id="exclude-tags-input" placeholder="Enter tags separated by commas (,)...">
                 <span class="clear"></span>
             </div>
         </div>
         </div>
     </div>
+{% endmacro %}
+
+{% macro search_url(endpoint, match_tags=False, match_all=False, tags='_all', exclude='') %}
+/{{ endpoint }}?search=True&match_tags={{ match_tags }}&match_all={{ match_all }}&tags={{ tags }}&exclude={{ exclude }}
 {% endmacro %}
 
 <html lang="en">

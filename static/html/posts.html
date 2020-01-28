@@ -10,10 +10,8 @@
     <span class="clear"></span>
     <p class="marker-body post-listing-summary">{{ post['long_summary'] }}</p>
     <p class="marker-info post-listing-tags">
-        Tags: {% for tag in post['tags'] %}
-                {{ tag }}
-                {% if not loop.last %}, {% endif %}
-              {% endfor %}
+        <span class="marker-info"><i class="material-icons clock">schedule</i> {{ post['length_in_min'] }} minute read</span>
+        <span class="pad-left-10">{{ tag_list('posts', post['tags']) }}</span>
     </p>
 </div>
 {% endfor %}

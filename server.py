@@ -105,26 +105,6 @@ def get_post(post_id):
     raise Exception('Post not found.')
 
 
-def get_projects(source, limit=None):
-    if limit is None:
-        limit = len(source)
-
-    if len(source) < limit:
-        limit = len(source)
-
-    return source[:limit]
-
-
-def get_up_to_n(source, limit=None):
-    if limit is None:
-        limit = len(source)
-
-    if len(source) < limit:
-        limit = len(source)
-
-    return source[:limit]
-
-
 async def homepage(request):
     # TODO: Send the 10 most recent posts and projects to be rendered in their respective sections
     recent_posts = [post.to_dict() for post in get_items('posts', Post, 5)]
@@ -137,9 +117,39 @@ async def homepage(request):
 
 
 async def posts(request):
+    if 'search' in request.query_params.keys() and request.query_params['search']:
+        response = generate_search_response('posts', Post, request)
+        return templates.TemplateResponse('posts.html', {'request': request, 'posts': response})
+
     all_posts = get_items('posts', Post)
     all_posts = [post.to_dict() for post in all_posts]
     return templates.TemplateResponse('posts.html', {'request': request, 'posts': all_posts})
+
+
+def generate_search_response(table_name, item_type, request):
+    q = request.query_params
+    print(q)
+    match_tags = True if 'match_tags' in q.keys() and q['match_tags'] == 'True' else False
+    print(f'Match tags: {match_tags}')
+    match_all = True if 'match_all' in q.keys() and q['match_all'] == 'True' else False
+    print(f'Match all: {match_all}')
+    tags = [tag.lower() for tag in q['tags'].split(',')] if 'tags' in q.keys() else []
+    exclude = [tag.lower() for tag in q['exclude'].split(',')] if 'exclude' in q.keys() else []
+    print(f'Tags: {tags}')
+    print(f'Exclude: {exclude}')
+
+    if not match_tags:
+        print("There isn't a way to search for keywords yet! Try matching an exact tag in the options.")
+        return []
+    elif match_all:
+        items = get_items(table_name, item_type)
+        matching_items = [item for item in items if all(search_tag in item.tags for search_tag in tags)]
+        matching_items = [item for item in matching_items if not any(exclude_tag in item.tags for exclude_tag in exclude)]
+    else:
+        items = get_items(table_name, item_type)
+        matching_items = [item for item in items if any(search_tag in item.tags for search_tag in tags)]
+        matching_items = [item for item in matching_items if not any(exclude_tag in item.tags for exclude_tag in exclude)]
+    return matching_items
 
 
 async def post(request):

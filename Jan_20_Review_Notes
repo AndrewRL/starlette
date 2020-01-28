@@ -1,0 +1,24 @@
+TODO: Overall
+- Consider reducing font sizes, particularly headers and titles
+- Create a means for adding items to the database
+
+
+TODO: Post Page
+- Fix image formatting for header image
+- Add margin notes
+- Add references
+- Add any options?
+
+TODO: Project Page
+
+TODO: Search
+- Add exact tag match
+    - Add urls for tag search
+    - Add javascript to fill tag in search bar
+    - Add multiple tag match
+    - Add multiple tag exclusion
+    - Update search options
+    - Style tag search options
+
+TODO: Tags
+- Update links to search for exact tag match within item category

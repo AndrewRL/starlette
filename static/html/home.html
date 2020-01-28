@@ -8,9 +8,9 @@
             <div class="home-post-listing">
                 <a class="marker-link-title recent-post-link" href="{{ url_for('post', post_id=post['id']|string) }}">{{ post['title'] }}</a>
                 <span class="marker-info timestamp">{{ post['timestamp']}}</span>
-                <span class="marker-info"><i class="material-icons clock">schedule</i> {{ post['length_in_min'] }} minute read</span>
+                <span class="marker-info pad-left-20"><i class="material-icons clock">schedule</i> {{ post['length_in_min'] }} minute read</span>
                 <span class="marker-info recent-post-tags">
-                    {{ tag_list(post['tags']) }}
+                    {{ tag_list(url_for('post', post_id=post['id']), post['tags']) }}
                 </span>
             </div>
         </li>
@@ -20,14 +20,14 @@
 <!-- Projects --->
 <a class='marker-link-header' href="{{ url_for('projects') }}">Projects</a>
 <ul class="recent-items">
-{% for project in projects %}
+    {% for project in projects %}
     <li>
         <div class="recent-project">
             <div class="recent-project-text">
                 <a class="recent-project-link" href="{{ url_for('project', project_id=project['id']|string) }}">{{ project['name'] }}</a>
                 <div class="recent-project-links">
-                    <a href="{{ project['github'] }}"><img class="recent-project-icon github-icon" src="/static/icons/github.svg"></a>
-                    <a href="{{ project['docs'] }}"><i class="recent-project-icon docs-icon material-icons">description</i></a>
+                    <a class="primary-info-link" href="{{ project['github'] }}">Github</a>
+                    <a class="primary-info-link" href="{{ project['docs'] }}">Docs</a>
                 </div>
             </div>
             <div class="recent-project-info">
@@ -36,7 +36,7 @@
             <span class="clear"></span>
             <p class="recent-project-body">{{ project['short_summary'] }}</p>
             <p class="marker-info recent-project-tags">
-                {{ tag_list(project['tags']) }}
+                    {{ tag_list(url_for('project', project_id=project['id']), project['tags']) }}
             </p>
         </div>
     </li>
@@ -53,9 +53,9 @@
         <p class="review-byline">By {{ review['creator'] }} ({{ review['publication_year'] }})</p>
         <p class="recent-review-info">
             <span class="marker-info review-timestamp">Reviewed <span class="timestamp">{{ review['timestamp'] }}</span></span>
-            <span class="review-star-rating">{{ star_rating(review['rating']) }}</span>
-            <span class="marker-info recent-review-tags">
-                {{ tag_list(review['tags']) }}
+            <span class="pad-left-10">{{ star_rating(review['rating']) }}</span>
+            <span class="marker-info pad-left-10 no-margin">
+                {{ tag_list(url_for('review', review_id=review['id']), review['tags']) }}
             </span>
         </p>
     </li>

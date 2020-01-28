@@ -1,17 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="post-container">
-    <h1 class="marker-title">{{ review['title'] }}</h1>
-    <span class="marker-info timestamp float-right">{{ review['timestamp']}}</span>
-    <span class="clear"></span>
-    <span class="marker-info">
-                    Tags: {% for tag in review['tags'] %}
-                            {{ tag }}
-                            {% if not loop.last %}, {% endif %}
-                          {% endfor %}
-                </span>
-    <span class="clear"></span>
-    <button type="button" id='options-tab' class="marker-link-info clear-button">+ Options</button>
-    <div class="marker-body post-body">{{ review['body']|safe }}</div>
+<div class="review-container">
+    <h1 class="primary-big-title review-detail-title small-margin">{{ review['name'] }}</h1>
+    <div class="hflex-container">
+        <p class="marker-info no-margin">By {{ review['creator'] }} ({{ review['publication_year'] }})<span class="review-star-rating pad-left-10">{{ star_rating(review['rating']) }}</span></p>
+        <p class="marker-info timestamp post-listing-timestamp">{{ review['timestamp'] }}</p>
+    </div>
+    <p class="marker-info no-margin">
+        <a class="review-product-link primary-info-link" href="{{ review['notes'] }}">Notes</a>
+        <a class="review-product-link primary-info-link" href="{{ review['link'] }}">Link</a>
+    </p>
+    <p class="marker-info no-margin">{{ tag_list('review', review['tags']) }}</p>
+    <p class="marker-body">{{ review['body']|safe }}</p>
 </div>
 {% endblock %}
